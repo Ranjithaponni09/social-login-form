@@ -1,0 +1,71 @@
+.welcome-container {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.emoji-pop {
+  font-size: 3rem;
+  animation: pop 1s ease-out;
+}
+
+.tamil-greeting {
+  font-size: 2rem;
+  margin: 10px 0 20px;
+  color: #333;
+}
+
+.music-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.music-btn:hover {
+  background-color: #008ba3;
+}
+
+/* Flower Animation */
+.flower {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Randomize flower positions and speeds */
+.flower:nth-child(1)  { left: 5%;  animation-duration: 8s; }
+.flower:nth-child(2)  { left: 15%; animation-duration: 10s; }
+.flower:nth-child(3)  { left: 25%; animation-duration: 9s; }
+.flower:nth-child(4)  { left: 35%; animation-duration: 11s; }
+.flower:nth-child(5)  { left: 45%; animation-duration: 8s; }
+.flower:nth-child(6)  { left: 55%; animation-duration: 10s; }
+.flower:nth-child(7)  { left: 65%; animation-duration: 12s; }
+.flower:nth-child(8)  { left: 75%; animation-duration: 9s; }
+.flower:nth-child(9)  { left: 85%; animation-duration: 11s; }
+.flower:nth-child(10) { left: 95%; animation-duration: 10s; }
+.flower:nth-child(11) { left: 30%; animation-duration: 13s; }
+.flower:nth-child(12) { left: 60%; animation-duration: 7s; }
+.flower:nth-child(13) { left: 20%; animation-duration: 14s; }

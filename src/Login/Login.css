@@ -1,0 +1,133 @@
+/* Login.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #d4f1f9, #5db9ee);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(14, 164, 214, 0.2);
+  width: 400px;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  animation: floatUp 0.8s ease;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-container:hover {
+  transform: scale(1.02);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #00bfff;
+  background: #e6f9ff;
+  box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #00bfff;
+}
+
+.login-form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #aee6f9;
+  background-color: #f0fbff;
+  transition: 0.2s ease-in-out;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #00bfff;
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+}
+
+.login-form button {
+  padding: 12px;
+  background-color: #00bfff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #009acd;
+}
+
+.google-login-btn {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #db4437;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.google-login-btn:hover {
+  background-color: #c23321;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+}
+
+.switch-link a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.forgot-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
