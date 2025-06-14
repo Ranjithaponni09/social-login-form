@@ -1,71 +1,71 @@
-.welcome-container {
-  position: relative;
-  height: 100vh;
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* Whole page layout */
+.page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to right, #d9f3f9, #63b3ed);
   font-family: 'Segoe UI', sans-serif;
 }
 
-.emoji-pop {
-  font-size: 3rem;
-  animation: pop 1s ease-out;
-}
-
-.tamil-greeting {
-  font-size: 2rem;
-  margin: 10px 0 20px;
-  color: #333;
-}
-
-.music-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #00bcd4;
+/* Navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #007bff;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav-left h3 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.nav-button {
+  background-color: white;
+  color: #007bff;
   border: none;
-  border-radius: 6px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
-.music-btn:hover {
-  background-color: #008ba3;
+.nav-button:hover {
+  background-color: #e2e6ea;
 }
 
-/* Flower Animation */
-.flower {
-  position: absolute;
-  top: -50px;
-  font-size: 24px;
-  animation: fall linear infinite;
+/* Centered welcome */
+.welcome-container {
+  padding-top: 100px;
+  text-align: center;
 }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-50px) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
+.welcome-message h2 {
+  font-weight: bold;
+  font-size: 28px;
+  color: #002855;
 }
-
-/* Randomize flower positions and speeds */
-.flower:nth-child(1)  { left: 5%;  animation-duration: 8s; }
-.flower:nth-child(2)  { left: 15%; animation-duration: 10s; }
-.flower:nth-child(3)  { left: 25%; animation-duration: 9s; }
-.flower:nth-child(4)  { left: 35%; animation-duration: 11s; }
-.flower:nth-child(5)  { left: 45%; animation-duration: 8s; }
-.flower:nth-child(6)  { left: 55%; animation-duration: 10s; }
-.flower:nth-child(7)  { left: 65%; animation-duration: 12s; }
-.flower:nth-child(8)  { left: 75%; animation-duration: 9s; }
-.flower:nth-child(9)  { left: 85%; animation-duration: 11s; }
-.flower:nth-child(10) { left: 95%; animation-duration: 10s; }
-.flower:nth-child(11) { left: 30%; animation-duration: 13s; }
-.flower:nth-child(12) { left: 60%; animation-duration: 7s; }
-.flower:nth-child(13) { left: 20%; animation-duration: 14s; }

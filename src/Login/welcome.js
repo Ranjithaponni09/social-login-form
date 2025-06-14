@@ -1,50 +1,52 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser, logoutUser } from './authSlice';
+import { useNavigate, Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 import './Welcome.css';
-import { Container } from 'react-bootstrap';
 
-const Welcome = () => {
-  const audioRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(false);
+function Welcome() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const audio = audioRef.current;
-    let vol = 0;
-    audio.volume = 0;
-    audio.play().catch((e) => console.log('Autoplay issue:', e));
+    dispatch(fetchUser());
+  }, [dispatch]);
 
-    const fadeIn = setInterval(() => {
-      if (vol < 0.2 && !isMuted) {
-        vol += 0.05;
-        audio.volume = vol;
-      } else {
-        clearInterval(fadeIn);
-      }
-    }, 200);
-  }, [isMuted]);
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/');
+  };
+
+  const handleLogin = () => {
+    navigate('/');
+  };
 
   return (
-    <Container sm={12} md={12}>
-    <div >
-      <h1 className="emoji-pop"> Welcome!</h1>
+    <div className="">
+      <nav className="navbar">
+        <div className="nav-left">
+          <h3>School</h3>
+        </div>
+        <div className="nav-right">
+          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/contact" className="nav-link">Contact</Link>
+          {user ? (
+            <button onClick={handleLogout} className="nav-button">Logout</button>
+          ) : (
+            <button onClick={handleLogin} className="nav-button">Login</button>
+          )}
+        </div>
+      </nav>
 
-      {/* Button to manually play */}
-      <span onClick={() => audioRef.current.play()} className=""/>
-        
-      
-
-      {/* Falling Flowers */}
-      {[...Array(15)].map((_, i) => (
-        <div className="flower" key={i}>🌸</div>
-      ))}
-
-      {/* Background Music */}
-      <audio ref={audioRef} loop>
-        <source src="/SoundHelix-Song-1.mp3" type="audio/mpeg" />
-        Your browser does not support the audio tag.
-      </audio>
+      <Container className="welcome-container">
+        <div className="welcome-message">
+          <h2>Welcome {user?.username || 'Guest'}!</h2>
+        </div>
+      </Container>
     </div>
-    </Container>
   );
-};
+}
 
 export default Welcome;

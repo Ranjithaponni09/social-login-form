@@ -1,67 +1,55 @@
+// Register.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registerUser } from './authSlice';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    username: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:4000/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, phone, email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message || 'User created successfully');
-        setUsername('');
-        setPhone('');
-        setEmail('');
-        setPassword('');
-      } else {
-        alert(data.message || 'Registration failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Something went wrong!');
+    const result = await dispatch(registerUser(form));
+    if (!result.error) {
+      alert('✅ Registration successful');
+      navigate('/');
+    } else {
+      alert('❌ Registration failed: ' + (result.payload?.message || ''));
     }
   };
 
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
-        {/* <div className="avatar"> */}
-          {/* <img
-            src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
-            alt="User Avatar"
-          />
-        </div> */}
-
         <h2>Create Account</h2>
 
         <input
           type="text"
+          name="username"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={form.username}
+          onChange={handleChange}
           required
         />
 
         <input
           type="tel"
+          name="phone"
           placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={form.phone}
+          onChange={handleChange}
           pattern="[0-9]{10}"
           title="Enter 10 digit phone number"
           required
@@ -69,17 +57,19 @@ const Register = () => {
 
         <input
           type="email"
+          name="email"
           placeholder="Gmail ID"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={form.email}
+          onChange={handleChange}
           required
         />
 
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={form.password}
+          onChange={handleChange}
           required
         />
 
